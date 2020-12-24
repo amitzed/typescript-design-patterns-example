@@ -100465,6 +100465,10 @@ function () {
     };
   }
 
+  User.prototype.markerContent = function () {
+    return "User's Name is: " + this.name;
+  };
+
   return User;
 }();
 
@@ -100525,6 +100529,10 @@ function () {
     };
   }
 
+  Company.prototype.markerContent = function () {
+    return "\n      <div>\n        <h1>Company's name is: " + this.companyName + "</h1>\n        <h2>Catch Phrase: " + this.catchPhrase + "</h2>\n      </div>\n    ";
+  };
+
   return Company;
 }();
 
@@ -100562,7 +100570,7 @@ function () {
     });
     marker.addListener('click', function () {
       var infoWindow = new google.maps.InfoWindow({
-        content: 'Testing'
+        content: mappable.markerContent()
       });
       infoWindow.open(_this.googleMap, marker);
     });
